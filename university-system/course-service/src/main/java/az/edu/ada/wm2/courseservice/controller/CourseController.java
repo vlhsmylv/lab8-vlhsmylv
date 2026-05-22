@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -82,5 +83,11 @@ public class CourseController {
     )
     public ResponseEntity<CourseStudentsResponseDto> getCourseStudents(@PathVariable Long courseId) {
         return ResponseEntity.ok(courseService.getCourseStudents(courseId));
+    }
+
+    @GetMapping("/students/search") 
+    @Operation(summary = "Find course with student name", description = "Search course with student's name and surname")
+    public ResponseEntity<List<CourseResponseDto>> searchStudents(@RequestParam String name) {
+        return ResponseEntity.ok(courseService.getCourseByStudentName(name));
     }
 }
