@@ -121,7 +121,7 @@ public class CourseService {
                 savedEnrollment.getCourseId(),
                 savedEnrollment.getStudentId(),
                 savedEnrollment.getEnrollmentDate(),
-                "Student enrolled successfully."
+                "Tələbə uğurla qeydiyyatdan keçdi."
         );
     }
 
@@ -148,7 +148,7 @@ public class CourseService {
         } catch (FeignException.NotFound ex) {
             throw new RemoteStudentNotFoundException(studentId);
         } catch (FeignException ex) {
-            throw new StudentServiceCommunicationException("Could not validate student-service response.");
+            throw new StudentServiceCommunicationException("Tələbə servisinin cavabını doğrulamaq mümkün olmadı.");
         }
     }
 
@@ -160,7 +160,7 @@ public class CourseService {
         } catch (HttpClientErrorException.NotFound ex) {
             throw new RemoteStudentNotFoundException(studentId);
         } catch (RestClientException ex) {
-            throw new StudentServiceCommunicationException("Could not fetch student details from student-service.");
+            throw new StudentServiceCommunicationException("Tələbə servisindən tələbə məlumatlarını almaq mümkün olmadı.");
         }
     }
 

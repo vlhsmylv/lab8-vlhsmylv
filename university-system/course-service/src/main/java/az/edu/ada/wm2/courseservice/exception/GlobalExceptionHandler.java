@@ -80,10 +80,21 @@ public class GlobalExceptionHandler {
         ApiErrorResponse response = new ApiErrorResponse(
                 LocalDateTime.now(),
                 status.value(),
-                status.getReasonPhrase(),
+                toAzerbaijaniReason(status),
                 message,
                 path
         );
         return new ResponseEntity<>(response, status);
+    }
+
+    private String toAzerbaijaniReason(HttpStatus status) {
+        return switch (status) {
+            case BAD_REQUEST -> "Yanlış sorğu";
+            case NOT_FOUND -> "Tapılmadı";
+            case CONFLICT -> "Münaqişə";
+            case BAD_GATEWAY -> "Keçid xətası";
+            case INTERNAL_SERVER_ERROR -> "Daxili server xətası";
+            default -> status.getReasonPhrase();
+        };
     }
 }

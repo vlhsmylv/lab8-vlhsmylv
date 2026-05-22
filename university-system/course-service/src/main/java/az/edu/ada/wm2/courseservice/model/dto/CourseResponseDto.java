@@ -12,18 +12,18 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CourseResponseDto {
 
-    @Schema(description = "Course id", example = "1")
+    @Schema(description = "Kursun ID-si", example = "1")
     private Long id;
 
-    @Schema(description = "Course title", example = "Data Structures")
+    @Schema(description = "Kursun adı", example = "Verilənlər Bazasının Əsasları")
     private String title;
 
-    @Schema(description = "Course code", example = "CS201")
+    @Schema(description = "Kursun kodu", example = "CS101")
     private String code;
 
-    @Schema(description = "Credit count", example = "4")
+    @Schema(description = "Kredit sayı", example = "3")
     private Integer credits;
 
-    @Schema(description = "Prerequisite course ID", example = "1")
+    @Schema(description = "İlkin şərtləndirilən kursun ID-si", example = "1")
     private Long prerequisiteCourseId;
 }
