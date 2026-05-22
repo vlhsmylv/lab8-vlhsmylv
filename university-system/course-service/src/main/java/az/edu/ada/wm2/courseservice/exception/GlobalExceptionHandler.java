@@ -20,6 +20,13 @@ public class GlobalExceptionHandler {
         return buildErrorResponse(HttpStatus.NOT_FOUND, ex.getMessage(), request.getRequestURI());
     }
 
+    @ExceptionHandler(PrerequisiteNotMetException.class)
+    public ResponseEntity<ApiErrorResponse> handlePrerequisiteNotFoundException(
+            PrerequisiteNotMetException ex,
+            HttpServletRequest request) {
+        return buildErrorResponse(HttpStatus.CONFLICT, ex.getMessage(), request.getRequestURI());
+    }
+
     @ExceptionHandler(RemoteStudentNotFoundException.class)
     public ResponseEntity<ApiErrorResponse> handleRemoteStudentNotFound(
             RemoteStudentNotFoundException ex,
